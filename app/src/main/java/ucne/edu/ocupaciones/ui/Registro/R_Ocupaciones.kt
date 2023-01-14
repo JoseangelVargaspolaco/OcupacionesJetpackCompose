@@ -40,7 +40,7 @@ fun Case(){
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
         Spacer(modifier = Modifier.padding(20.dp))
-        DescripcionCase(Modifier.align(Alignment.CenterHorizontally))
+        DescripciónCase(Modifier.align(Alignment.CenterHorizontally))
         Spacer(modifier = Modifier.padding(4.dp))
         SalarioCase(Modifier.align(Alignment.CenterHorizontally))
         Spacer(modifier = Modifier.padding(8.dp))
@@ -50,9 +50,9 @@ fun Case(){
 
 
 @Composable
-fun DescripcionCase(modifier: Modifier){
+fun DescripciónCase(modifier: Modifier){
     TextField(
-        value = "", onValueChange = { },
+        value = "Descripción", onValueChange = { },
         modifier = Modifier.border(BorderStroke(2.dp,Color.Gray), RoundedCornerShape(10))
             .fillMaxWidth()
             .height(70.dp)
@@ -74,7 +74,7 @@ fun DescripcionCase(modifier: Modifier){
 @Composable
 fun SalarioCase(modifier: Modifier){
     TextField(
-        value = "", onValueChange = { },
+        value = "Salario", onValueChange = { },
         modifier = Modifier.border(BorderStroke(2.dp,Color.Gray), RoundedCornerShape(10))
             .height(70.dp)
             .padding(5.dp)
