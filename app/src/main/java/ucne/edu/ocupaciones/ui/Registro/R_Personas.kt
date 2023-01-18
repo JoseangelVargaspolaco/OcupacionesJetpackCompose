@@ -1,7 +1,6 @@
 package ucne.edu.ocupaciones.ui.Registro
 
 import android.app.DatePickerDialog
-import android.content.Context
 import android.widget.DatePicker
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -64,7 +63,7 @@ fun CasePersona() {
         EmailCase(Modifier.align(Alignment.CenterHorizontally))
         Spacer(modifier = Modifier.padding(1.dp))
         DirecciónCase(Modifier.align(Alignment.CenterHorizontally))
-        showDatePicker(Modifier.align(Alignment.CenterHorizontally))
+        FechaNacimientoCase(Modifier.align(Alignment.CenterHorizontally))
         Spacer(modifier = Modifier.padding(1.dp))
         SelectOcupacionesCase(Modifier.align(Alignment.CenterHorizontally))
         Spacer(modifier = Modifier.padding(8.dp))
@@ -73,7 +72,7 @@ fun CasePersona() {
 }
 
 @Composable
-fun showDatePicker(modifier: Modifier) {
+fun FechaNacimientoCase(modifier: Modifier) {
 
     var fecha by rememberSaveable { mutableStateOf("") }
     val anio:Int
@@ -123,10 +122,11 @@ fun showDatePicker(modifier: Modifier) {
 fun NombresCase(modifier: Modifier){
 
     var textfieldSize by remember { mutableStateOf(Size.Zero)}
+    var selectedText by remember { mutableStateOf("") }
 
     OutlinedTextField(
-        value = "",
-        onValueChange = {},
+        value = selectedText,
+        onValueChange = { selectedText = it },
         modifier = Modifier
             .fillMaxWidth()
             .height(70.dp)
@@ -143,10 +143,11 @@ fun NombresCase(modifier: Modifier){
 fun TelefonoCase(modifier: Modifier){
 
     var textfieldSize by remember { mutableStateOf(Size.Zero)}
+    var selectedText by remember { mutableStateOf("") }
 
     OutlinedTextField(
-        value = "",
-        onValueChange = {},
+        value = selectedText,
+        onValueChange = { selectedText = it },
         modifier = Modifier
             .fillMaxWidth()
             .height(70.dp)
@@ -192,10 +193,11 @@ fun CelularCase(modifier: Modifier){
 fun EmailCase(modifier: Modifier){
 
     var textfieldSize by remember { mutableStateOf(Size.Zero)}
+    var selectedText by remember { mutableStateOf("") }
 
     OutlinedTextField(
-        value = "",
-        onValueChange = {},
+        value = selectedText,
+        onValueChange = { selectedText = it },
         modifier = Modifier
             .fillMaxWidth()
             .height(70.dp)
@@ -212,10 +214,11 @@ fun EmailCase(modifier: Modifier){
 fun DirecciónCase(modifier: Modifier){
 
     var textfieldSize by remember { mutableStateOf(Size.Zero)}
+    var selectedText by remember { mutableStateOf("") }
 
     OutlinedTextField(
-        value = "",
-        onValueChange = {},
+        value = selectedText,
+        onValueChange = { selectedText = it },
         modifier = Modifier
             .fillMaxWidth()
             .height(70.dp)
@@ -279,7 +282,10 @@ fun SelectOcupacionesCase(modifier: Modifier) {
 }
 
 @Composable
-fun ButtonGuardar(modifier: Modifier) {
+fun ButtonGuardar(modifier: Modifier) {4
+
+    var selectedText by remember { mutableStateOf("") }
+
     Button(
         onClick = { },
         modifier = Modifier
