@@ -26,13 +26,14 @@ fun Ocupaciones(){
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        Case()
+        /*Ir al MainActivity para cambiar de registro*/
+        OcupacionesCase()
     }
 }
 
 @Preview(showSystemUi = true)
 @Composable
-fun Case(){
+fun OcupacionesCase(){
     Column(modifier = Modifier){
         Spacer(modifier = Modifier.padding(110.dp))
         Text(

@@ -40,6 +40,7 @@ fun Personas(){
             .fillMaxSize()
             .padding(16.dp)
     ) {
+        /*Ir al MainActivity para cambiar de registro*/
         CasePersona()
     }
 }
