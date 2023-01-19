@@ -1,7 +1,6 @@
 package ucne.edu.ocupaciones.ui.Registro
 
 import android.app.DatePickerDialog
-import android.content.Context
 import android.widget.DatePicker
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -35,12 +34,13 @@ import androidx.compose.ui.platform.LocalContext
 import java.util.*
 
 @Composable
-fun Personas(){
+fun Personas() {
     Box(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
     ) {
+        /*Ir al MainActivity para cambiar de registro*/
         CasePersona()
     }
 }
@@ -48,7 +48,7 @@ fun Personas(){
 @Preview(showSystemUi = true)
 @Composable
 fun CasePersona() {
-    Column(modifier = Modifier){
+    Column(modifier = Modifier) {
         Spacer(modifier = Modifier.padding(20.dp))
         Text(
             text = "Registro de personas", fontSize = 25.sp,
@@ -64,7 +64,7 @@ fun CasePersona() {
         EmailCase(Modifier.align(Alignment.CenterHorizontally))
         Spacer(modifier = Modifier.padding(1.dp))
         DirecciónCase(Modifier.align(Alignment.CenterHorizontally))
-        showDatePicker(Modifier.align(Alignment.CenterHorizontally))
+        FechaNacimientoCase(Modifier.align(Alignment.CenterHorizontally))
         Spacer(modifier = Modifier.padding(1.dp))
         SelectOcupacionesCase(Modifier.align(Alignment.CenterHorizontally))
         Spacer(modifier = Modifier.padding(8.dp))
@@ -73,12 +73,12 @@ fun CasePersona() {
 }
 
 @Composable
-fun showDatePicker(modifier: Modifier) {
+fun FechaNacimientoCase(modifier: Modifier) {
 
     var fecha by rememberSaveable { mutableStateOf("") }
-    val anio:Int
-    val mes:Int
-    val dia:Int
+    val anio: Int
+    val mes: Int
+    val dia: Int
 
     val mCalendar = Calendar.getInstance()
     anio = mCalendar.get(Calendar.YEAR)
@@ -87,20 +87,20 @@ fun showDatePicker(modifier: Modifier) {
 
     val mDatePickerDialog = DatePickerDialog(
         LocalContext.current,
-        {
-                _ :DatePicker, anio:Int, mes:Int, dia:Int ->
-            fecha = "$dia/${mes+1}/$anio"
-        },anio,mes,dia
+        { _: DatePicker, anio: Int, mes: Int, dia: Int ->
+            fecha = "$dia/${mes + 1}/$anio"
+        }, anio, mes, dia
     )
 
     Row() {
         OutlinedTextField(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .height(70.dp)
                 .padding(5.dp),
             value = fecha,
-            onValueChange = {fecha = it},
-            readOnly = true,
+            onValueChange = { fecha = it },
+            readOnly = true, enabled = false,
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Filled.DateRange,
@@ -113,20 +113,21 @@ fun showDatePicker(modifier: Modifier) {
                         }
                 )
             },
-            label = {Text(text = "Fecha de nacimiento", fontSize = 19.sp)}
+            label = { Text(text = "Fecha de nacimiento", fontSize = 19.sp) }
         )
     }
 
 }
 
 @Composable
-fun NombresCase(modifier: Modifier){
+fun NombresCase(modifier: Modifier) {
 
-    var textfieldSize by remember { mutableStateOf(Size.Zero)}
+    var textfieldSize by remember { mutableStateOf(Size.Zero) }
+    var selectedText by remember { mutableStateOf("") }
 
     OutlinedTextField(
-        value = "",
-        onValueChange = {},
+        value = selectedText,
+        onValueChange = { selectedText = it },
         modifier = Modifier
             .fillMaxWidth()
             .height(70.dp)
@@ -135,18 +136,19 @@ fun NombresCase(modifier: Modifier){
                 //This value is used to assign to the DropDown the same width
                 textfieldSize = coordinates.size.toSize()
             },
-        label = {Text("Nombres", fontSize = 19.sp)},
+        label = { Text("Nombres", fontSize = 19.sp) },
     )
 }
 
 @Composable
-fun TelefonoCase(modifier: Modifier){
+fun TelefonoCase(modifier: Modifier) {
 
-    var textfieldSize by remember { mutableStateOf(Size.Zero)}
+    var textfieldSize by remember { mutableStateOf(Size.Zero) }
+    var selectedText by remember { mutableStateOf("") }
 
     OutlinedTextField(
-        value = "",
-        onValueChange = {},
+        value = selectedText,
+        onValueChange = { selectedText = it },
         modifier = Modifier
             .fillMaxWidth()
             .height(70.dp)
@@ -155,18 +157,18 @@ fun TelefonoCase(modifier: Modifier){
                 //This value is used to assign to the DropDown the same width
                 textfieldSize = coordinates.size.toSize()
             },
-        label = {Text("Telefono", fontSize = 19.sp)},
+        label = { Text("Telefono", fontSize = 19.sp) },
     )
 }
 
 @Composable
-fun CelularCase(modifier: Modifier){
+fun CelularCase(modifier: Modifier) {
 
     var expanded by remember { mutableStateOf(false) }
 
     var selectedText by remember { mutableStateOf("") }
 
-    var textfieldSize by remember { mutableStateOf(Size.Zero)}
+    var textfieldSize by remember { mutableStateOf(Size.Zero) }
 
     val icon = if (expanded)
         Icons.Filled.KeyboardArrowUp
@@ -184,18 +186,19 @@ fun CelularCase(modifier: Modifier){
                 //This value is used to assign to the DropDown the same width
                 textfieldSize = coordinates.size.toSize()
             },
-        label = {Text("Celular", fontSize = 19.sp)}
+        label = { Text("Celular", fontSize = 19.sp) }
     )
 }
 
 @Composable
-fun EmailCase(modifier: Modifier){
+fun EmailCase(modifier: Modifier) {
 
-    var textfieldSize by remember { mutableStateOf(Size.Zero)}
+    var textfieldSize by remember { mutableStateOf(Size.Zero) }
+    var selectedText by remember { mutableStateOf("") }
 
     OutlinedTextField(
-        value = "",
-        onValueChange = {},
+        value = selectedText,
+        onValueChange = { selectedText = it },
         modifier = Modifier
             .fillMaxWidth()
             .height(70.dp)
@@ -204,18 +207,19 @@ fun EmailCase(modifier: Modifier){
                 //This value is used to assign to the DropDown the same width
                 textfieldSize = coordinates.size.toSize()
             },
-        label = {Text("Email", fontSize = 19.sp)}
+        label = { Text("Email", fontSize = 19.sp) }
     )
 }
 
 @Composable
-fun DirecciónCase(modifier: Modifier){
+fun DirecciónCase(modifier: Modifier) {
 
-    var textfieldSize by remember { mutableStateOf(Size.Zero)}
+    var textfieldSize by remember { mutableStateOf(Size.Zero) }
+    var selectedText by remember { mutableStateOf("") }
 
     OutlinedTextField(
-        value = "",
-        onValueChange = {},
+        value = selectedText,
+        onValueChange = { selectedText = it },
         modifier = Modifier
             .fillMaxWidth()
             .height(70.dp)
@@ -224,7 +228,7 @@ fun DirecciónCase(modifier: Modifier){
                 //This value is used to assign to the DropDown the same width
                 textfieldSize = coordinates.size.toSize()
             },
-        label = {Text("Dirección", fontSize = 19.sp)}
+        label = { Text("Dirección", fontSize = 19.sp) }
     )
 }
 
@@ -237,7 +241,7 @@ fun SelectOcupacionesCase(modifier: Modifier) {
 
     var selectedText by remember { mutableStateOf("") }
 
-    var textfieldSize by remember { mutableStateOf(Size.Zero)}
+    var textfieldSize by remember { mutableStateOf(Size.Zero) }
 
     val icon = if (expanded)
         Icons.Filled.KeyboardArrowUp
@@ -255,9 +259,10 @@ fun SelectOcupacionesCase(modifier: Modifier) {
                 //This value is used to assign to the DropDown the same width
                 textfieldSize = coordinates.size.toSize()
             },
-            label = {Text("Selecciona ocupaciones", fontSize = 19.sp)},
+        label = { Text("Selecciona ocupaciones", fontSize = 19.sp) },
+        readOnly = true, enabled = false,
         trailingIcon = {
-            Icon(icon,"contentDescription",
+            Icon(icon, "contentDescription",
                 modifier.clickable { expanded = !expanded })
         }
     )
@@ -265,7 +270,7 @@ fun SelectOcupacionesCase(modifier: Modifier) {
         expanded = expanded,
         onDismissRequest = { expanded = false },
         modifier = Modifier
-            .width(with(LocalDensity.current){textfieldSize.width.toDp()})
+            .width(with(LocalDensity.current) { textfieldSize.width.toDp() })
     ) {
         suggestions.forEach { label ->
             DropdownMenuItem(onClick = {
@@ -280,6 +285,10 @@ fun SelectOcupacionesCase(modifier: Modifier) {
 
 @Composable
 fun ButtonGuardar(modifier: Modifier) {
+    4
+
+    var selectedText by remember { mutableStateOf("") }
+
     Button(
         onClick = { },
         modifier = Modifier
