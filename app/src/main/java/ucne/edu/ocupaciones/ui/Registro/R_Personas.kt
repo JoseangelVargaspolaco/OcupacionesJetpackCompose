@@ -259,7 +259,7 @@ fun SelectOcupacionesCase(modifier: Modifier) {
                 //This value is used to assign to the DropDown the same width
                 textfieldSize = coordinates.size.toSize()
             },
-        label = { Text("Selecciona ocupaciones", fontSize = 19.sp) },
+        label = { Text("Selecciona ocupacion", fontSize = 19.sp) },
         readOnly = true, enabled = false,
         trailingIcon = {
             Icon(icon, "contentDescription",
