@@ -33,7 +33,7 @@ fun Ocupaciones() {
 @Composable
 fun OcupacionesCase() {
     Column(modifier = Modifier) {
-        Spacer(modifier = Modifier.padding(110.dp))
+        Spacer(modifier = Modifier.padding(20.dp))
         Text(
             text = "Registro de ocupaciones", fontSize = 27.sp,
             modifier = Modifier.align(Alignment.CenterHorizontally)
