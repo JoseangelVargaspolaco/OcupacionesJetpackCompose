@@ -4,4 +4,5 @@
    
  # Imagen del registro de personas
  
-   ![WhatsApp Image 2023-01-14 at 8 17 34 PM](https://user-images.githubusercontent.com/97201605/212502910-59703c45-e9ff-4957-93e3-d7a4156c6e38.jpeg)
+   ![50ebbd4b-8462-4220-97ff-4968647beb55](https://user-images.githubusercontent.com/97201605/214114534-0aee36a2-157d-45f4-ac25-10f938e9855f.jpg)
+
